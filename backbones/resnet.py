@@ -358,7 +358,6 @@ if __name__ == "__main__":
     # Test input
     dummy_input = torch.randn(4, 3, 224, 224)  # batch size 4, image size 224x224
 
-
     # Test resnet50 (standard)
     model = resnet50(pretrained=False)
     model.eval()
