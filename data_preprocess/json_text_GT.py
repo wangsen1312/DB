@@ -8,10 +8,17 @@ os.makedirs(output_dir, exist_ok=True)
 
 # ---- Define class mapping ----
 class_mapping = {
-    "Other": 0,
-    "Truck Number": 1,
-    "USDOTNumber": 2,
-    # Add more if needed
+    "Plate Number Front": 0,
+    "Plate Number Rear": 1,
+    "Truck Number": 2,
+    "Trailer Number": 3,
+    "Container Number": 4,
+    "Chassis Number": 5,
+    "USDOTNumber": 6,
+    "Length": 7,
+    "Tank Number": 8,
+    "Container Tank Number": 9,
+    "Flatbed Number": 10
 }
 
 # ---- Load JSON and extract labels ----
