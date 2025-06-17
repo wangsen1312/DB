@@ -1,0 +1,29 @@
+images are in train_images/
+labels are in train_gts/, named like gt_img_0001.txt
+Labels follow the polygon format
+
+update the config to point to your dataset
+run training using the config with your dataset
+
+
+
+a. Add a classification head:
+Add this to the model:
+
+self.classifier = nn.Sequential(
+    nn.AdaptiveAvgPool2d((1, 1)),  # Global pooling per feature map
+    nn.Flatten(),
+    nn.Linear(in_channels, num_classes)
+)
+
+
+b.
+classification_loss = F.cross_entropy(pred_class, gt_class)
+total_loss = seg_loss + binarization_loss + classification_loss
+
+c. Instead of manually cropping from the feature map, you can:
+from torchvision.ops import roi_align
+
+# Prepare RoIs from polygons or bounding boxes
+rois = torch.tensor([[batch_index, x1, y1, x2, y2], ...])
+roi_features = roi_align(feature_map, rois, output_size=(7, 7))
